@@ -3,7 +3,7 @@
 # Author:gpw
 # Description：http://github.com/123010100/Py-DBHelper-MySql
 
-from pymysql import *
+from pymysql import connect
 
 
 # mysql
@@ -62,6 +62,7 @@ class MySqlDataSource(object):
         # 参数校验
         if sql is None or param is None:
             return count
+        
         # 执行查询
         try:
             handler = self.__get_cursor()
