@@ -38,7 +38,7 @@ class MySqlDataSource(object):
     # 执行查询select
     def execute_query(self, sql, param):
         # 参数校验
-        if sql is None or param is None:
+        if sql is None and param is None:
             return None
 
         data_list = []
@@ -57,11 +57,11 @@ class MySqlDataSource(object):
 
     # 执行增删改(update、insert、delete)
     def execute_modify(self, sql, param):
-        # 参数校验
-        if sql is None or param is None:
-            return None
         # 受影响行数
         count = 0
+        # 参数校验
+        if sql is None or param is None:
+            return count
         # 执行查询
         try:
             handler = self.__get_cursor()
